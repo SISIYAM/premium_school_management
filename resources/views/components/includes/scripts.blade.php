@@ -23,6 +23,8 @@
 <script src="{{ asset('assets/js/plugins/vfs_fonts.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/buttons.bootstrap5.min.js') }}"></script>
+<!-- Sweet Alert -->
+<script src="{{ asset('assets/js/plugins/sweetalert2.all.min.js') }}"></script>
 
 <script>
     // [ HTML5 Export Buttons ]

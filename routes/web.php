@@ -1,19 +1,23 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InsertController;
+use App\Http\Controllers\AdminDashboardController;
 
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/student/details', function () {
-    return view('student-list-table');
+
+
+Route::controller(AdminDashboardController::class)->group(function () {
+    Route::get('/student/details','loadStudentDetailsTable')
+    ->name('admin.student.details');
+    Route::get('/student/create','loadStudentCreateForm')
+    ->name('admin.student.create');
 });
 
-Route::get('/student/admission/form', function () {
-    return view('student-admission-form');
+Route::controller(InsertController::class)->group(function () {
+    Route::post('/student/create/execute','insertStudentDetails')->name('execute.student.create');
 });
 
-Route::get('/table', function () {
-    return view('layouts.common-table');
-});

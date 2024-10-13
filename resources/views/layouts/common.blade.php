@@ -38,6 +38,8 @@
 
     @include('components.includes.scripts')
 
+    @stack('sweet-alert');
+
 </body>
 
 <!-- [Body] end -->
