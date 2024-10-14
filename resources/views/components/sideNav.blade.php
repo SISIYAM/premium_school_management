@@ -61,57 +61,34 @@
                             </svg>
                         </span>
                         <span class="pc-mtext">Dashboard</span>
-                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                        <span class="pc-badge">2</span>
                     </a>
-                    <ul class="pc-submenu">
-                        <li class="pc-item">
-                            <a class="pc-link" href="../dashboard/index.html">Default</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="../dashboard/analytics.html">Analytics</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="../dashboard/finance.html">Finance</a>
-                        </li>
-                    </ul>
                 </li>
-
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
-                                <use xlink:href="#custom-document"></use>
+                                <use xlink:href="#custom-user"></use>
                             </svg>
                         </span>
-                        <span class="pc-mtext">Layouts</span>
+                        <span class="pc-mtext">Student Information</span>
                         <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                     </a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="../demo/layout-vertical.html">Vertical</a>
+                            <a class="pc-link" href="{{ route('admin.student.details') }}">Student Details</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="../demo/layout-horizontal.html">Horizontal</a>
+                            <a class="pc-link" href="{{ route('admin.student.create') }}">Create Student</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="../demo/layout-color-header.html">Layouts 2</a>
+                            <a class="pc-link" href="../admins/membership-pricing.html">Pricing</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="../demo/layout-compact.html">Compact</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="../demo/layout-tab.html">Tab</a>
+                            <a class="pc-link" href="../admins/membership-setting.html">Setting</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="pc-item pc-caption">
-                    <label>Widget</label>
-                    <svg class="pc-icon">
-                        <use xlink:href="#custom-presentation-chart"></use>
-                    </svg>
-                </li>
                 <li class="pc-item">
                     <a href="../widget/w_statistics.html" class="pc-link">
                         <span class="pc-micon">
@@ -227,31 +204,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
-                        <span class="pc-micon">
-                            <svg class="pc-icon">
-                                <use xlink:href="#custom-user"></use>
-                            </svg>
-                        </span>
-                        <span class="pc-mtext">Membership</span>
-                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
-                    </a>
-                    <ul class="pc-submenu">
-                        <li class="pc-item">
-                            <a class="pc-link" href="../admins/membership-dashboard.html">Dashboard</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="../admins/membership-list.html">List</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="../admins/membership-pricing.html">Pricing</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="../admins/membership-setting.html">Setting</a>
-                        </li>
-                    </ul>
-                </li>
+
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link"><span class="pc-micon">
                             <svg class="pc-icon">

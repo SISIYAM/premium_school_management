@@ -1,27 +1,6 @@
 @extends('layouts.common')
 @section('page-content')
     @if ($data)
-        <!-- [ breadcrumb ] start -->
-        <div class="page-header">
-            <div class="page-block">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0)">Users</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Account Profile</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="page-header-title">
-                            <h2 class="mb-0">Account Profile</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- [ breadcrumb ] end -->
-
         <!-- [ Main Content ] start -->
         <div class="row">
             <!-- [ sample-page ] start -->
@@ -89,22 +68,31 @@
                                                         alt="User image" />
                                                 @endif
                                             </div>
-                                            <h5 class="mb-0">{{ $data->first_name . ' ' . $data->last_name }}</h5>
+                                            <h5 class="mb-0">
+                                                @if ($data->first_name || $data->last_name)
+                                                    {{ $data->first_name . ' ' . $data->last_name }}
+                                                @else
+                                                    Not added yet!
+                                                @endif
+                                            </h5>
                                             <p class="text-muted text-sm">
-                                                {{ 'Class - ' . $data->class . ' | Section - ' . $data->section }}</p>
+                                                @if ($data->class && $data->section)
+                                                    {{ 'Class - ' . $data->class . ' | Section - ' . $data->section }}
+                                                @endif
+                                            </p>
 
                                             <hr class="my-3 border border-secondary-subtle" />
                                             @if ($data->admission_no)
                                                 <div
                                                     class="d-inline-flex align-items-center justify-content-start w-100 mb-3">
-                                                    <i class="ti ti-mail me-2"></i>
+                                                    <i class="ti ti-user me-2"></i>
                                                     <p class="mb-0">{{ $data->admission_no }}</p>
                                                 </div>
                                             @endif
                                             @if ($data->roll_no)
                                                 <div
                                                     class="d-inline-flex align-items-center justify-content-start w-100 mb-3">
-                                                    <i class="ti ti-mail me-2"></i>
+                                                    <i class="ti ti-id me-2"></i>
                                                     <p class="mb-0">{{ $data->roll_no }}</p>
                                                 </div>
                                             @endif
@@ -147,31 +135,56 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <p class="mb-1 text-muted">Full Name</p>
-                                                        <p class="mb-0">Anshan Handgun</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->first_name || $data->last_name)
+                                                                {{ $data->first_name . ' ' . $data->last_name }}
+                                                            @else
+                                                                Not added yet!
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <p class="mb-1 text-muted">Father Name</p>
-                                                        <p class="mb-0">Mr. Deepen Handgun</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->father_name)
+                                                                {{ $data->father_name }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="list-group-item px-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Phone</p>
-                                                        <p class="mb-0">(+1-876) 8654 239 581</p>
+                                                        <p class="mb-1 text-muted">Current Address</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->current_address)
+                                                                {{ $data->current_address }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Country</p>
-                                                        <p class="mb-0">New York</p>
+                                                        <p class="mb-1 text-muted">Mother Name</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->mother_name)
+                                                                {{ $data->mother_name }}
+                                                            @endif
+                                                        </p>
                                                     </div>
+
                                                 </div>
                                             </li>
                                             <li class="list-group-item px-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <p class="mb-1 text-muted">Email</p>
-                                                        <p class="mb-0">anshan.dh81@gmail.com</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->email)
+                                                                {{ $data->email }}
+                                                            @else
+                                                                Not added yet!
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <p class="mb-1 text-muted">Zip Code</p>

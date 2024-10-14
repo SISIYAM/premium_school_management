@@ -11,10 +11,10 @@ class AdminDashboardController extends Controller
     // method for load student details table
     public function loadStudentDetailsTable(){
         $thead = ['A.No','Student Name','Roll','Class','Gender','Category','Mobile','Action'];
-        $tableRow = User::all();
+        $students = Student::all();
 
-        // return $tableRow;
-        return view('tables.student-list-table',['key'=> 'studentDetails','thead' => $thead,'tableRow' => $tableRow]);
+        // return $students;
+        return view('tables.student-list-table',['key'=> 'studentDetails','thead' => $thead,'tableRow' => $students]);
     }
 
     // method for load create student form 
