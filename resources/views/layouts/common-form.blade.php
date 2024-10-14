@@ -16,7 +16,7 @@
         </div>
     </div>
 @endsection
-@if (Session::has('success'))
+{{-- @if (Session::has('success'))
     @push('sweet-alert')
         <script>
             Swal.fire({
@@ -25,6 +25,48 @@
                 text: "{{ Session::get('success') }}"
 
             });
+        </script>
+    @endpush
+@endif --}}
+
+@if (Session::has('success'))
+    @push('toast')
+        <script>
+            window.onload = function() {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                };
+
+                let icon = "{{ Session::get('icon', 'success') }}";
+                let title = "{{ Session::get('title', 'Success') }}";
+                let message = "{{ Session::get('success') }}";
+
+
+                if (icon === 'success') {
+                    toastr.success(message, title);
+                } else if (icon === 'error') {
+                    toastr.error(message, title);
+                } else if (icon === 'warning') {
+                    toastr.warning(message, title);
+                } else if (icon === 'info') {
+                    toastr.info(message, title);
+                } else {
+                    toastr.success(message, title);
+                }
+            };
         </script>
     @endpush
 @endif

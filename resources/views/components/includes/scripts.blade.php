@@ -25,6 +25,7 @@
 <script src="{{ asset('assets/js/plugins/buttons.bootstrap5.min.js') }}"></script>
 <!-- Sweet Alert -->
 <script src="{{ asset('assets/js/plugins/sweetalert2.all.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
     // [ HTML5 Export Buttons ]

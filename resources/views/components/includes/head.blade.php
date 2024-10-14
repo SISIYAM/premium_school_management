@@ -12,6 +12,7 @@
 
     @include('components.titleAndLogo')
 
+
     {{-- sweet alert --}}
     <link href="{{ asset('assets/css/plugins/animate.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- data tables css -->
@@ -36,7 +37,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" />
     <script src="{{ asset('assets/js/tech-stack.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/style-preset.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/uikit.css') }}" />
     <style>
         .swal2-success-circular-line-left {
             display: none;
@@ -50,4 +50,6 @@
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>

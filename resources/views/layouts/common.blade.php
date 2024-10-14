@@ -39,6 +39,7 @@
     @include('components.includes.scripts')
 
     @stack('sweet-alert');
+    @stack('toast')
 
 </body>
 
