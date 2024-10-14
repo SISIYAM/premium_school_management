@@ -28,19 +28,19 @@
                     </div>
                     <div class="collapse pc-user-links" id="pc_sidebar_userlink">
                         <div class="pt-3">
-                            <a href="#!">
+                            <a href="#">
                                 <i class="ti ti-user"></i>
                                 <span>My Account</span>
                             </a>
-                            <a href="#!">
+                            <a href="#">
                                 <i class="ti ti-settings"></i>
                                 <span>Settings</span>
                             </a>
-                            <a href="#!">
+                            <a href="#">
                                 <i class="ti ti-lock"></i>
                                 <span>Lock Screen</span>
                             </a>
-                            <a href="#!">
+                            <a href="{{ route('admin.logout') }}">
                                 <i class="ti ti-power"></i>
                                 <span>Logout</span>
                             </a>
@@ -54,7 +54,7 @@
                     <label>Navigation</label>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-status-up"></use>
@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-user"></use>
@@ -125,7 +125,7 @@
                     </svg>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-layer"></use>
@@ -139,7 +139,7 @@
                             <a class="pc-link" href="../admins/course-dashboard.html">Dashboard</a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a class="pc-link" href="#!">Teacher<span class="pc-arrow"><i
+                            <a class="pc-link" href="#">Teacher<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -154,7 +154,7 @@
                             </ul>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a class="pc-link" href="#!">Student<span class="pc-arrow"><i
+                            <a class="pc-link" href="#">Student<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -169,7 +169,7 @@
                             </ul>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a class="pc-link" href="#!">Courses<span class="pc-arrow"><i
+                            <a class="pc-link" href="#">Courses<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -187,7 +187,7 @@
                             <a class="pc-link" href="../admins/course-site.html">Site</a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a class="pc-link" href="#!">Setting<span class="pc-arrow"><i
+                            <a class="pc-link" href="#">Setting<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -206,7 +206,7 @@
                 </li>
 
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link"><span class="pc-micon">
+                    <a href="#" class="pc-link"><span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-24-support"></use>
                             </svg> </span><span class="pc-mtext">Helpdesk</span><span class="pc-arrow"><i
@@ -216,7 +216,7 @@
                             <a class="pc-link" href="../admins/helpdesk-dashboard.html">Dashboard</a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a class="pc-link" href="#!">Ticket<span class="pc-arrow"><i
+                            <a class="pc-link" href="#">Ticket<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -236,7 +236,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-bill"></use>
@@ -282,7 +282,7 @@
                             </svg> </span><span class="pc-mtext">Animation</span></a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link"><span class="pc-micon">
+                    <a href="#" class="pc-link"><span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-mouse-circle"></use>
                             </svg> </span><span class="pc-mtext">Icons</span><span class="pc-arrow"><i
@@ -316,7 +316,7 @@
                     </svg>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-element-plus"></use>
@@ -352,7 +352,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-cpu-charge"></use>
@@ -410,7 +410,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-text-block"></use>
@@ -449,7 +449,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-row-vertical"></use>
@@ -474,7 +474,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-document-upload"></use>
@@ -526,7 +526,7 @@
                     </svg>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-text-align-justify-center"></use>
@@ -550,7 +550,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-keyboard"></use>
@@ -594,7 +594,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-graph"></use>
@@ -621,7 +621,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-add-item"></use>
@@ -634,7 +634,7 @@
                             <a class="pc-link" href="../table/dt_ext_autofill.html">Autofill</a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Button<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Button<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -679,7 +679,7 @@
                     </svg>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-graph"></use>
@@ -697,7 +697,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-shapes"></use>
@@ -749,7 +749,7 @@
                         <span class="pc-mtext">Customer</span></a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-shopping-bag"></use>
@@ -794,7 +794,7 @@
                         <span class="pc-mtext">Mail</span></a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-user-square"></use>
@@ -819,7 +819,7 @@
                     </svg>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-shield"></use>
@@ -829,7 +829,7 @@
                                 data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Authentication 1<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Authentication 1<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -857,7 +857,7 @@
                             </ul>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Authentication 2<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Authentication 2<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -890,7 +890,7 @@
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-flag"></use>
@@ -906,7 +906,7 @@
                             <a class="pc-link" target="_blank" href="../pages/error-500.html">Error 500</a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Under construction<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Under construction<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -920,7 +920,7 @@
                             </ul>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Coming soon<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Coming soon<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
@@ -946,7 +946,7 @@
                     </a>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link">
+                    <a href="#" class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-dollar-square"></use>
@@ -977,58 +977,58 @@
                     </svg>
                 </li>
                 <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link"><span class="pc-micon">
+                    <a href="#" class="pc-link"><span class="pc-micon">
                             <svg class="pc-icon">
                                 <use xlink:href="#custom-level"></use>
                             </svg> </span><span class="pc-mtext">Menu levels</span><span class="pc-arrow"><i
                                 data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="#!">Level 2.1</a>
+                            <a class="pc-link" href="#">Level 2.1</a>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Level 2.2<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Level 2.2<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
-                                    <a class="pc-link" href="#!">Level 3.1</a>
+                                    <a class="pc-link" href="#">Level 3.1</a>
                                 </li>
                                 <li class="pc-item">
-                                    <a class="pc-link" href="#!">Level 3.2</a>
+                                    <a class="pc-link" href="#">Level 3.2</a>
                                 </li>
                                 <li class="pc-item pc-hasmenu">
-                                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i
+                                    <a href="#" class="pc-link">Level 3.3<span class="pc-arrow"><i
                                                 data-feather="chevron-right"></i></span></a>
                                     <ul class="pc-submenu">
                                         <li class="pc-item">
-                                            <a class="pc-link" href="#!">Level 4.1</a>
+                                            <a class="pc-link" href="#">Level 4.1</a>
                                         </li>
                                         <li class="pc-item">
-                                            <a class="pc-link" href="#!">Level 4.2</a>
+                                            <a class="pc-link" href="#">Level 4.2</a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li class="pc-item pc-hasmenu">
-                            <a href="#!" class="pc-link">Level 2.3<span class="pc-arrow"><i
+                            <a href="#" class="pc-link">Level 2.3<span class="pc-arrow"><i
                                         data-feather="chevron-right"></i></span></a>
                             <ul class="pc-submenu">
                                 <li class="pc-item">
-                                    <a class="pc-link" href="#!">Level 3.1</a>
+                                    <a class="pc-link" href="#">Level 3.1</a>
                                 </li>
                                 <li class="pc-item">
-                                    <a class="pc-link" href="#!">Level 3.2</a>
+                                    <a class="pc-link" href="#">Level 3.2</a>
                                 </li>
                                 <li class="pc-item pc-hasmenu">
-                                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i
+                                    <a href="#" class="pc-link">Level 3.3<span class="pc-arrow"><i
                                                 data-feather="chevron-right"></i></span></a>
                                     <ul class="pc-submenu">
                                         <li class="pc-item">
-                                            <a class="pc-link" href="#!">Level 4.1</a>
+                                            <a class="pc-link" href="#">Level 4.1</a>
                                         </li>
                                         <li class="pc-item">
-                                            <a class="pc-link" href="#!">Level 4.2</a>
+                                            <a class="pc-link" href="#">Level 4.2</a>
                                         </li>
                                     </ul>
                                 </li>
