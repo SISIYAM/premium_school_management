@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
@@ -19,5 +20,17 @@ class AdminDashboardController extends Controller
     // method for load create student form 
     public function loadStudentCreateForm(){
         return view('forms.student-admission-form');
+    }
+
+    // method for load student profile
+    public function loadStudentProfile($id = null){
+        if(!$id){
+            return view('pages.erro-404');
+        }
+
+        $student = Student::where(compact('id'))->first();
+
+        return view('pages.student-profile',['data' => $student]);
+        
     }
 }

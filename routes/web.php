@@ -15,6 +15,8 @@ Route::controller(AdminDashboardController::class)->group(function () {
     ->name('admin.student.details');
     Route::get('/student/create','loadStudentCreateForm')
     ->name('admin.student.create');
+    Route::get('/student/profile/{id?}','loadStudentProfile')
+    ->name('admin.student.profile');
 });
 
 Route::controller(InsertController::class)->group(function () {
