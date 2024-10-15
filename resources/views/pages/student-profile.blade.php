@@ -17,25 +17,25 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab-2" data-bs-toggle="tab" href="#profile-2" role="tab"
                                     aria-selected="true">
-                                    <i class="ti ti-file-text me-2"></i>Personal Details
+                                    <i class="ti ti-file-text me-2"></i>Fees
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab-3" data-bs-toggle="tab" href="#profile-3" role="tab"
                                     aria-selected="true">
-                                    <i class="ti ti-id me-2"></i>My Account
+                                    <i class="ti ti-id me-2"></i>Exam
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab-4" data-bs-toggle="tab" href="#profile-4" role="tab"
                                     aria-selected="true">
-                                    <i class="ti ti-lock me-2"></i>Change Password
+                                    <i class="ti ti-lock me-2"></i>Attendance
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab-5" data-bs-toggle="tab" href="#profile-5" role="tab"
                                     aria-selected="true">
-                                    <i class="ti ti-users me-2"></i>Role
+                                    <i class="ti ti-users me-2"></i>Documents
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -124,7 +124,6 @@
 
                             </div>
                             <div class="col-lg-8 col-xxl-9">
-
                                 <div class="card">
                                     <div class="card-header">
                                         <h5>Personal Details</h5>
@@ -144,6 +143,192 @@
                                                         </p>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Blood Group</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->blood_group)
+                                                                {{ $data->blood_group }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Permanent Address</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->permanent_address)
+                                                                {{ $data->permanent_address }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Religion</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->religion)
+                                                                {{ $data->religion }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Gender</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->gender)
+                                                                {{ $data->gender }}
+                                                            @else
+                                                                Not added yet!
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Categtory</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->category)
+                                                                {{ $data->category }}
+                                                            @else
+                                                                Not added yet!
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Date Of Birth</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->dob)
+                                                                {{ \Carbon\Carbon::parse($data->dob)->format('d M Y') }}
+                                                            @else
+                                                                Not added yet!
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Religion</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->religion)
+                                                                {{ $data->religion }}
+                                                            @else
+                                                                Not added yet!
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Physical Details</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Hieght</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->height)
+                                                                {{ $data->height }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Weight</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->weight)
+                                                                {{ $data->weight }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="row">
+
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Medical History</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->created_at)
+                                                                {{ $data->admission_no }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Measurement Date</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->measurement_date)
+                                                                {{ \Carbon\Carbon::parse($data->measurement_date)->format('d M Y h:i A') }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Admission Details</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Admission Date</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->created_at)
+                                                                {{ $data->created_at->format('d M Y h:i A') }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Admission Number</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->created_at)
+                                                                {{ $data->admission_no }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Parent's Information</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Father Photo</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->father_photo)
+                                                                <img height="50" width="50"
+                                                                    src="{{ $data->father_photo }}" alt="Father Photo"
+                                                                    class="img-fluid rounded">
+                                                            @else
+                                                                <img height="50" width="50"
+                                                                    src="https://imgs.search.brave.com/RIvg_lwsUTnDwOR5KUF4d7tX8f6_L58Irn8BlWZlMmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3Lzc1LzcxLzEy/LzM2MF9GXzc3NTcx/MTI1M19LR25nT2hk/VE50TEcxaWp6TDNk/bEJiTDlBMkY0dkZP/bS5qcGc"
+                                                                    alt="Default Father Photo" class="img-fluid rounded">
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <p class="mb-1 text-muted">Father Name</p>
                                                         <p class="mb-0">
                                                             @if ($data->father_name)
@@ -153,13 +338,41 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item px-0">
+
+                                            <li class="list-group-item px-0 pt-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Current Address</p>
+                                                        <p class="mb-1 text-muted">Father Phone</p>
                                                         <p class="mb-0">
-                                                            @if ($data->current_address)
-                                                                {{ $data->current_address }}
+                                                            @if ($data->father_phone)
+                                                                {{ $data->father_phone }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Father Occupation</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->father_occupation)
+                                                                {{ $data->father_occupation }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Mother Photo</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->mother)
+                                                                <img height="50" width="50"
+                                                                    src="{{ $data->mother }}" alt="Father Photo"
+                                                                    class="img-fluid rounded">
+                                                            @else
+                                                                <img height="50" width="50"
+                                                                    src="https://imgs.search.brave.com/RIvg_lwsUTnDwOR5KUF4d7tX8f6_L58Irn8BlWZlMmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3Lzc1LzcxLzEy/LzM2MF9GXzc3NTcx/MTI1M19LR25nT2hk/VE50TEcxaWp6TDNk/bEJiTDlBMkY0dkZP/bS5qcGc"
+                                                                    alt="Default Father Photo" class="img-fluid rounded">
                                                             @endif
                                                         </p>
                                                     </div>
@@ -171,74 +384,119 @@
                                                             @endif
                                                         </p>
                                                     </div>
-
                                                 </div>
                                             </li>
-                                            <li class="list-group-item px-0">
+
+                                            <li class="list-group-item px-0 pt-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Email</p>
+                                                        <p class="mb-1 text-muted">Mother Phone</p>
                                                         <p class="mb-0">
-                                                            @if ($data->email)
-                                                                {{ $data->email }}
-                                                            @else
-                                                                Not added yet!
+                                                            @if ($data->mother_phone)
+                                                                {{ $data->mother_phone }}
                                                             @endif
                                                         </p>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Zip Code</p>
-                                                        <p class="mb-0">956 754</p>
+                                                        <p class="mb-1 text-muted">Mother occupation</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->mother_occupation)
+                                                                {{ $data->mother_occupation }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                 </div>
-                                            </li>
-                                            <li class="list-group-item px-0 pb-0">
-                                                <p class="mb-1 text-muted">Address</p>
-                                                <p class="mb-0">Street 110-B Kalians Bag, Dewan, M.P. New York</p>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
+
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5>Education</h5>
+                                        <h5>Guardian's Information</h5>
                                     </div>
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item px-0 pt-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Master Degree (Year)</p>
-                                                        <p class="mb-0">2014-2017</p>
+                                                        <p class="mb-1 text-muted">Guardian Photo</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_photo)
+                                                                <img height="50" width="50"
+                                                                    src="{{ $data->guardian_photo }}"
+                                                                    alt="guardian Photo" class="img-fluid rounded">
+                                                            @else
+                                                                <img height="50" width="50"
+                                                                    src="https://imgs.search.brave.com/RIvg_lwsUTnDwOR5KUF4d7tX8f6_L58Irn8BlWZlMmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3Lzc1LzcxLzEy/LzM2MF9GXzc3NTcx/MTI1M19LR25nT2hk/VE50TEcxaWp6TDNk/bEJiTDlBMkY0dkZP/bS5qcGc"
+                                                                    alt="Default Father Photo" class="img-fluid rounded">
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Institute</p>
-                                                        <p class="mb-0">-</p>
+                                                        <p class="mb-1 text-muted">Guardian Name</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_name)
+                                                                {{ $data->guardian_name }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item px-0">
+
+                                            <li class="list-group-item px-0 pt-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Bachelor (Year)</p>
-                                                        <p class="mb-0">2011-2013</p>
+                                                        <p class="mb-1 text-muted">Relation With Guardian</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_relation)
+                                                                {{ $data->guardian_relation }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Institute</p>
-                                                        <p class="mb-0">Imperial College London</p>
+                                                        <p class="mb-1 text-muted">Guardian Phone</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_phone)
+                                                                {{ $data->guardian_phone }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item px-0 pb-0">
+
+                                            <li class="list-group-item px-0 pt-0">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">School (Year)</p>
-                                                        <p class="mb-0">2009-2011</p>
+                                                        <p class="mb-1 text-muted">Guardian Email</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_email)
+                                                                {{ $data->guardian_email }}
+                                                            @endif
+                                                        </p>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <p class="mb-1 text-muted">Institute</p>
-                                                        <p class="mb-0">School of London, England</p>
+                                                        <p class="mb-1 text-muted">Guardian Occupation</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_occupation)
+                                                                {{ $data->guardian_occupation }}
+                                                            @endif
+                                                        </p>
                                                     </div>
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item px-0 pt-0">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p class="mb-1 text-muted">Guardian Address</p>
+                                                        <p class="mb-0">
+                                                            @if ($data->guardian_address)
+                                                                {{ $data->guardian_address }}
+                                                            @endif
+                                                        </p>
+                                                    </div>
+
                                                 </div>
                                             </li>
                                         </ul>

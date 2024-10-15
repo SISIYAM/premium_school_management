@@ -38,7 +38,7 @@ class AdminDashboardController extends Controller
         if(empty($student)){
             return view('errors.error-404');
         }
-
+        // return $student;
         return view('pages.student-profile',['data' => $student]);
         
     }
