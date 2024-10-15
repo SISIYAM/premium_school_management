@@ -5,7 +5,7 @@
         <div class="row">
             <!-- [ sample-page ] start -->
             <div class="col-sm-12">
-               
+
                 <div class="card">
                     <div class="card-body py-0">
                         <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
@@ -55,7 +55,7 @@
                                 <div class="card">
                                     <div class="card-body position-relative">
                                         <div class="position-absolute end-0 top-0 p-3">
-                                            <span class="badge bg-primary">Student</span>
+                                            <span class="badge bg-warning">Student</span>
                                         </div>
                                         <div class="text-center mt-3">
                                             <div class="chat-avtar d-inline-flex mx-auto">
@@ -120,7 +120,15 @@
                                             @endif
 
                                         </div>
+
                                     </div>
+                                </div>
+                                <div class="card btn"
+                                    style="cursor: pointer; background-color: #3C6DD9; color: #fff; transition: background-color 0.3s ease;"
+                                    onclick="window.location.href='{{ route('admin.update.student.details', $data->id) }}'"
+                                    onmouseover="this.style.backgroundColor='#28a745'"
+                                    onmouseout="this.style.backgroundColor='#3C6DD9'">
+                                    Edit Information
                                 </div>
 
                             </div>
