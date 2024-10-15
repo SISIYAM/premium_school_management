@@ -4,28 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class InsertController extends Controller
+class UpdateController extends Controller
 {
 
-    // Function to generate admission number
-    protected function generateAdmissionNo()
-    {
-        date_default_timezone_set('Asia/Dhaka');
-        $date = date('ymd');
-        $randomDigits = rand(1000, 9999); 
-        return $date . $randomDigits;
-    }
     // function to handle image upload with custom names
     protected function handleImageUpload($req, $fieldName, $folder, $prefix) {
         if ($req->hasFile($fieldName)) {
             try {
                 $file = $req->file($fieldName);
-                // Get file extension
+                // get file extension
                 $extension = $file->getClientOriginalExtension(); 
-                // Define custom filename
+                // define custom filename
                 $filename = $prefix . '_' . time() . '.' . $extension; 
-                // Save with custom name
+                // save with custom name
                 $file->storeAs("images/$folder", $filename, 'public'); 
                 return "images/$folder/$filename";
             } catch (\Exception $e) {
@@ -35,12 +28,33 @@ class InsertController extends Controller
         return 'images/default-image.jpg'; 
     }
 
-    // method for insert student details
-    public function insertStudentDetails(Request $req){
 
-        // generate admission number
-        $admission_no = $this->generateAdmissionNo();
+    // function to handle image update with delete old image
+    protected function updatePhoto($req, $student, $fieldName, $directory, $admission_no)
+    {
+        if ($req->hasFile($fieldName)) {
+            // delete old image if it exists
+            if ($student->$fieldName) {
+                $this->deleteOldImage($student->$fieldName);
+            }
+            // upload and return new image path
+            return $this->handleImageUpload($req, $fieldName, $directory, $admission_no);
+        }
+        // return existing image path if no new file is uploaded
+        return $student->$fieldName;
+    }
 
+    // function to delete image from storage
+    protected function deleteOldImage($path)
+    {
+        // if file exist on public directory then delete it
+        if (Storage::disk('public')->exists($path)) {
+            Storage::disk('public')->delete($path);
+        }
+    }
+
+    // method for update student details
+    public function updateStudentDetails(Request $req){
        // Validation rules with custom messages
        $req->validate([
         'first_name' => 'required|string|max:255',
@@ -103,16 +117,19 @@ class InsertController extends Controller
         'student_photo.max' => 'Student photo cannot exceed 2MB.',
     ]);
 
-    
+    // first search student based on its id
+    $student = Student::where('id',$req->id)->first();
 
-    $student_photo_path = $this->handleImageUpload($req, 'student_photo', 'students', $admission_no);
-    $father_photo_path  = $this->handleImageUpload($req, 'father_photo', 'fathers', $admission_no);
-    $mother_photo_path  = $this->handleImageUpload($req, 'mother_photo', 'mothers', $admission_no);
-    $guardian_photo_path = $this->handleImageUpload($req, 'guardian_photo', 'guardians', $admission_no);
+    // fetch admission no from student array
+    $admission_no = $student->admission_no;
 
-    
-    $insert = Student::create([
-        'admission_no' => $admission_no,
+    // handle image uploads
+    $student_photo_path  = $this->updatePhoto($req, $student, 'student_photo', 'students', $admission_no);
+    $father_photo_path   = $this->updatePhoto($req, $student, 'father_photo', 'fathers', $admission_no);
+    $mother_photo_path   = $this->updatePhoto($req, $student, 'mother_photo', 'mothers', $admission_no);
+    $guardian_photo_path = $this->updatePhoto($req, $student, 'guardian_photo', 'guardians', $admission_no);
+        
+    $student->update([
         'first_name' => $req->first_name,
         'last_name' => $req->last_name,
         'roll_no' => $req->roll_no,
@@ -151,7 +168,10 @@ class InsertController extends Controller
         
     ]);
 
-    return redirect()->route('admin.student.create')->with(['icon' => 'success','title' => 'Success!','success' => 'Student details inserted successfully']);
-
+    return redirect()->back()->with([
+        'icon' => 'success',
+        'title' => 'Success!',
+        'success' => 'Student details updated successfully',
+    ]);
     }
 }

@@ -42,4 +42,16 @@ class AdminDashboardController extends Controller
         return view('pages.student-profile',['data' => $student]);
         
     }
+
+    // method for load update student form
+    public function loadStudentUpdateForm($id = null){
+        if(!$id){
+            return view('errors.error-404');
+        }
+        $student = Student::where(compact('id'))->first();
+        if(empty($student)){
+            return view('errors.error-404');
+        }
+        return view('forms.update.update-student-admission-form',['data' => $student]);
+    }
 }

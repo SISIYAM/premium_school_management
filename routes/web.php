@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\InsertController;
+use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\AdminDashboardController;
 
 
@@ -29,6 +30,8 @@ Route::controller(AuthController::class)->group(function(){
 
 
 Route::middleware([AdminMiddleware::class])->group(function(){
+
+    // routes for display
     Route::controller(AdminDashboardController::class)->group(function () {
         Route::get('/','loadDashboard')
         ->name('admin.dashboard');
@@ -38,10 +41,21 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         ->name('admin.student.create');
         Route::get('/student/profile/{id?}','loadStudentProfile')
         ->name('admin.student.profile');
+        
+        // route for load student details update form
+        Route::get('/student/profile/edit/{id?}','loadStudentUpdateForm')
+        ->name('admin.update.student.details');
     });
 
+    // routes for insert
     Route::controller(InsertController::class)->group(function () {
         Route::post('/student/create/execute','insertStudentDetails')->name('execute.student.create');
     });
+
+    // routes for update
+    Route::controller(UpdateController::class)->group(function() {
+        Route::put('/student/update/execute','updateStudentDetails')->name('execute.student.details');
+    });
+    
 });
 

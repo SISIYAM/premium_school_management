@@ -50,10 +50,12 @@
                             <i class="ti ti-eye f-20"></i>
                         </button>
                     </a>
-                    <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Edit">
-                        <i class="ti ti-edit f-20"></i>
-                    </button>
+                    <a href="{{ route('admin.update.student.details', $row->id) }}">
+                        <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Edit">
+                            <i class="ti ti-edit f-20"></i>
+                        </button>
+                    </a>
                     <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
                         data-bs-placement="top" title="Fees">
                         <i class="ti ti-cash f-20"></i>
