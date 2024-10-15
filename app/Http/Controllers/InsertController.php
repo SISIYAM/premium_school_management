@@ -85,6 +85,30 @@ class InsertController extends Controller
         'student_photo.max' => 'Student photo cannot exceed 2MB.',
     ]);
 
+    // function to handle image upload with custom names
+    function handleImageUpload($req, $fieldName, $folder, $prefix) {
+        if ($req->hasFile($fieldName)) {
+            try {
+                $file = $req->file($fieldName);
+                // Get file extension
+                $extension = $file->getClientOriginalExtension(); 
+                // Define custom filename
+                $filename = $prefix . '_' . time() . '.' . $extension; 
+                // Save with custom name
+                $file->storeAs("images/$folder", $filename, 'public'); 
+                return "images/$folder/$filename";
+            } catch (\Exception $e) {
+                return 'images/default-image.jpg';
+            }
+        }
+        return 'images/default-image.jpg'; 
+    }
+
+    $student_photo_path = handleImageUpload($req, 'student_photo', 'students', $admission_no);
+    $father_photo_path  = handleImageUpload($req, 'father_photo', 'fathers', $admission_no);
+    $mother_photo_path  = handleImageUpload($req, 'mother_photo', 'mothers', $admission_no);
+    $guardian_photo_path = handleImageUpload($req, 'guardian_photo', 'guardians', $admission_no);
+
     
     $insert = Student::create([
         'admission_no' => $admission_no,
@@ -119,6 +143,10 @@ class InsertController extends Controller
         'guardian_address' => $req->guardian_address,
         'current_address' => $req->current_address,
         'permanent_address' => $req->permanent_address,
+        'student_photo' => $student_photo_path,
+        'father_photo' => $father_photo_path,
+        'mother_photo' => $mother_photo_path,
+        'guardian_photo' => $guardian_photo_path
         
     ]);
 

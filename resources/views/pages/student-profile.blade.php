@@ -5,6 +5,7 @@
         <div class="row">
             <!-- [ sample-page ] start -->
             <div class="col-sm-12">
+               
                 <div class="card">
                     <div class="card-body py-0">
                         <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
@@ -60,7 +61,7 @@
                                             <div class="chat-avtar d-inline-flex mx-auto">
                                                 @if ($data->student_photo)
                                                     <img class="rounded-circle img-fluid wid-70"
-                                                        src="{{ asset('assets/' . $data->student_photo) }}"
+                                                        src="{{ asset('storage/' . $data->student_photo) }}"
                                                         alt="User image" />
                                                 @else
                                                     <img class="rounded-circle img-fluid wid-70"
@@ -319,8 +320,8 @@
                                                         <p class="mb-0">
                                                             @if ($data->father_photo)
                                                                 <img height="50" width="50"
-                                                                    src="{{ $data->father_photo }}" alt="Father Photo"
-                                                                    class="img-fluid rounded">
+                                                                    src="{{ asset('storage/' . $data->father_photo) }}"
+                                                                    alt="Father Photo" class="img-fluid rounded">
                                                             @else
                                                                 <img height="50" width="50"
                                                                     src="https://imgs.search.brave.com/RIvg_lwsUTnDwOR5KUF4d7tX8f6_L58Irn8BlWZlMmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3Lzc1LzcxLzEy/LzM2MF9GXzc3NTcx/MTI1M19LR25nT2hk/VE50TEcxaWp6TDNk/bEJiTDlBMkY0dkZP/bS5qcGc"
@@ -365,10 +366,10 @@
                                                     <div class="col-md-6">
                                                         <p class="mb-1 text-muted">Mother Photo</p>
                                                         <p class="mb-0">
-                                                            @if ($data->mother)
+                                                            @if ($data->mother_photo)
                                                                 <img height="50" width="50"
-                                                                    src="{{ $data->mother }}" alt="Father Photo"
-                                                                    class="img-fluid rounded">
+                                                                    src="{{ asset('storage/' . $data->mother_photo) }}"
+                                                                    alt="Father Photo" class="img-fluid rounded">
                                                             @else
                                                                 <img height="50" width="50"
                                                                     src="https://imgs.search.brave.com/RIvg_lwsUTnDwOR5KUF4d7tX8f6_L58Irn8BlWZlMmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA3Lzc1LzcxLzEy/LzM2MF9GXzc3NTcx/MTI1M19LR25nT2hk/VE50TEcxaWp6TDNk/bEJiTDlBMkY0dkZP/bS5qcGc"
@@ -424,7 +425,7 @@
                                                         <p class="mb-0">
                                                             @if ($data->guardian_photo)
                                                                 <img height="50" width="50"
-                                                                    src="{{ $data->guardian_photo }}"
+                                                                    src="{{ asset('storage/' . $data->guardian_photo) }}"
                                                                     alt="guardian Photo" class="img-fluid rounded">
                                                             @else
                                                                 <img height="50" width="50"
