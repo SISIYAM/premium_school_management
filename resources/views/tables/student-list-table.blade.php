@@ -1,6 +1,9 @@
 @extends('layouts.common-table')
 
 @if ($key == 'studentDetails')
+    @section('card-header')
+        <h4>Student List</h4>
+    @endsection
     @section('filter-section')
         <div class="col-sm-12">
             <div class="card">
@@ -66,3 +69,5 @@
         @endforeach
     @endsection
 @endif
+@push('ajax')
+@endpush

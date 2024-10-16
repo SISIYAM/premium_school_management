@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Classe;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -53,5 +54,17 @@ class AdminDashboardController extends Controller
             return view('errors.error-404');
         }
         return view('forms.update.update-student-admission-form',['data' => $student]);
+    }
+
+    // method for load class list
+    public function loadClassesList(){
+
+        // table headers
+        $thead = ['#','Class Name','Author','Created At','Last Update', 'Action'];
+
+        $class = Classe::with('getAuthor')->get();
+
+        // return $class;
+        return view('tables.manage-classes',['key' => 'classes','thead' => $thead, 'tableRow' => $class]);
     }
 }

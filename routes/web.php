@@ -46,11 +46,13 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         // route for load student details update form
         Route::get('/student/profile/edit/{id?}','loadStudentUpdateForm')
         ->name('admin.update.student.details');
+        Route::get('/manage/classes','loadClassesList')->name('admin.manage.class.list');
     });
 
     // routes for insert
     Route::controller(InsertController::class)->group(function () {
         Route::post('/student/create/execute','insertStudentDetails')->name('execute.student.create');
+        Route::post('/class/create/execute','insertClass')->name('execute.class.create');
     });
 
     // routes for update
@@ -62,6 +64,9 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     Route::controller(AjaxController::class)->group(function() {
         Route::post('/admin/ajax/student/status','studentStatusUpdate')
         ->name('admin.ajax.student.status');
+        Route::post('/admin/ajax/filter/student-details/class','filterClassSearch')
+        ->name('admin.ajax.student.filter.class');
+        Route::post('/admin/ajax/create/class/','createClass')->name('admin.ajax.create.class');
     });
     
 });

@@ -30,11 +30,14 @@
         }
     </style>
     @yield('filter-section')
-
+    @yield('modal-content')
     <div class="col-sm-12">
         <div class="card">
+
             <div class="card-header">
-                <h4>Student Details</h4>
+
+                @yield('card-header')
+
             </div>
             <div class="card-body">
                 <div class="dt-responsive table-responsive" style="overflow-x: auto;">
