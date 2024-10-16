@@ -11,23 +11,23 @@
                 <div class="card-body">
                     <div class="row mb-3 d-flex justify-content-center">
                         <div class="col-sm-4">
-                            <label for="filterOption" class="form-label fw-bold">Class:</label>
-                            <select id="filterOption" class="form-select shadow-sm">
+                            <label for="filterStudentClass" class="form-label fw-bold">Class:</label>
+                            <select id="filterStudentClass" class="form-select shadow-sm">
                                 <option value="">Select</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
-                            <label for="sectionOption" class="form-label fw-bold">Section:</label>
-                            <select id="sectionOption" class="form-select shadow-sm">
+                            <label for="filterStudentSection" class="form-label fw-bold">Section:</label>
+                            <select id="filterStudentSection" class="form-select shadow-sm">
                                 <option value="all">Select</option>
                             </select>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center">
+                    {{-- <div class="d-flex justify-content-center">
                         <div class="col-sm-2">
                             <button id="applyFilter" class="btn btn-primary w-100">Apply Filter</button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

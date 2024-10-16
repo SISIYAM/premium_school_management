@@ -414,7 +414,49 @@
                     </ul>
                 </li>
 
+                <li class="pc-item pc-caption">
+                    <label>Other</label>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="#" class="pc-link">
+                        <span class="pc-micon">
+                            <i class="ti ti-settings"></i>
 
+                        </span>
+                        <span class="pc-mtext">Settings</span>
+                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    </a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Manage Classes</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Manage Sections </a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Student ID Card</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Generate ID Card</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Staff ID Card</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Generate Staff ID Card</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="pc-item">
+                    <a href="../widget/w_chart.html" class="pc-link">
+                        <span class="pc-micon">
+                            <svg class="pc-icon">
+                                <use xlink:href="#custom-presentation-chart"></use>
+                            </svg>
+                        </span>
+                        <span class="pc-mtext">SEI Innovations</span></a>
+                </li>
             </ul>
         </div>
     </div>

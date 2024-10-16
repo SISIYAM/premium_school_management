@@ -46,7 +46,7 @@
                                 @endforeach
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tableBody">
                             @yield('table-row')
                         </tbody>
                     </table>
