@@ -55,7 +55,11 @@
                                 <div class="card">
                                     <div class="card-body position-relative">
                                         <div class="position-absolute end-0 top-0 p-3">
-                                            <span class="badge bg-warning">Student</span>
+                                            @if ($data->status)
+                                                <span class="badge bg-success statusBadge">Active</span>
+                                            @else
+                                                <span class="badge bg-danger statusBadge">Disabled</span>
+                                            @endif
                                         </div>
                                         <div class="text-center mt-3">
                                             <div class="chat-avtar d-inline-flex mx-auto">
@@ -1162,29 +1166,32 @@ Hello, I’m Anshan Handgun Creative Graphic Designer & User Experience Designer
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <h5>Email Settings</h5>
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h5>Student Status </h5>
+                                        @if ($data->status)
+                                            <span class="badge bg-success statusBadge">Active</span>
+                                        @else
+                                            <span class="badge bg-danger statusBadge">Disabled</span>
+                                        @endif
                                     </div>
                                     <div class="card-body">
-                                        <h6 class="mb-4">Setup Email Notification</h6>
+
                                         <div class="d-flex align-items-center justify-content-between mb-1">
                                             <div>
-                                                <p class="text-muted mb-0">Email Notification</p>
+                                                <h6 class="mb-4">
+                                                    @if ($data->status)
+                                                        Disable Student
+                                                    @else
+                                                        Active Student
+                                                    @endif
+                                                </h6>
                                             </div>
                                             <div class="form-check form-switch p-0">
                                                 <input class="m-0 form-check-input h5 position-relative" type="checkbox"
-                                                    role="switch" checked="" />
+                                                    role="switch" checked="" id="studentStatus" />
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center justify-content-between mb-1">
-                                            <div>
-                                                <p class="text-muted mb-0">Send Copy To Personal Email</p>
-                                            </div>
-                                            <div class="form-check form-switch p-0">
-                                                <input class="m-0 form-check-input h5 position-relative" type="checkbox"
-                                                    role="switch" />
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="card">
@@ -1323,3 +1330,58 @@ Hello, I’m Anshan Handgun Creative Graphic Designer & User Experience Designer
         <!-- [ Main Content ] end -->
     @endif
 @endsection
+@push('ajax')
+    <script>
+        // toastr setting
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        const studentId = "{{ $data->id }}";
+        $(document).on("click", "#studentStatus", function() {
+
+            let status = 0;
+            if ($(this).is(":checked")) {
+                status = 1;
+            }
+            $.ajax({
+                type: "POST",
+                url: "{{ route('admin.ajax.student.status') }}",
+                data: {
+                    _token: "{{ csrf_token() }}", // Include CSRF token
+                    student_id: studentId,
+                    status,
+
+                },
+                success: function(response) {
+                    if (response.status == 1) {
+                        toastr.success(response.message, 'Success');
+                        $('.statusBadge')
+                            .text('Active')
+                            .removeClass('bg-danger')
+                            .addClass('bg-success');
+                    } else {
+                        toastr.error(response.message, 'Error');
+                        $('.statusBadge')
+                            .text('Inactive')
+                            .removeClass('bg-success')
+                            .addClass('bg-danger');
+                    }
+
+                }
+            });
+        })
+    </script>
+@endpush

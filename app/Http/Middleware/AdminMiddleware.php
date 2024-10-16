@@ -20,7 +20,6 @@ class AdminMiddleware
         if (auth()->check()) {
             $user = auth()->user();
 
-            // check if the user has the role of admin (role == 2) or moderator (role == 1)
             if ($user->status == 1) {
                 return $next($request);
             } 

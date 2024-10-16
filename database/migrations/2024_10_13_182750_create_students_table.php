@@ -50,6 +50,7 @@ return new class extends Migration
             $table->string('guardian_photo')->nullable();
             $table->string('current_address')->nullable();
             $table->string('permanent_address')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps(); 
         });
     }

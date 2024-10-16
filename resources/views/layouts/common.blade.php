@@ -41,6 +41,7 @@
     @stack('sweet-alert');
     @stack('toast')
     @stack('script')
+    @stack('ajax')
 
 </body>
 

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\InsertController;
@@ -55,6 +56,12 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     // routes for update
     Route::controller(UpdateController::class)->group(function() {
         Route::put('/student/update/execute','updateStudentDetails')->name('execute.student.details');
+    });
+
+    // routes for ajax request
+    Route::controller(AjaxController::class)->group(function() {
+        Route::post('/admin/ajax/student/status','studentStatusUpdate')
+        ->name('admin.ajax.student.status');
     });
     
 });
