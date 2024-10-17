@@ -54,4 +54,24 @@ class AjaxController extends Controller
         
         return response()->json(['status' => true, 'message' => 'Class created successfully.','classes' => $class]);
     }
+
+    // method for delete class
+    public function deleteClass(Request $req){
+        
+        $delete = Classe::find($req->class_id);
+    
+        if (!$delete) {
+            return response()->json(['status' => false, 'message' => 'Class not found.']); 
+        } 
+
+        $delete->delete();
+
+        // now fetch all classes
+        $classes = Classe::with('getAuthor')->get();
+
+        return response()->json(['status' => true, 'message' => 'Class deleted successfully.','classes' => $classes]);
+
+       
+        
+    }
 }

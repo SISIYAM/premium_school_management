@@ -30,12 +30,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 <script>
-    // [ HTML5 Export Buttons ]
-    $('#basic-btn').DataTable({
-        dom: 'Bfrtip',
-        buttons: ['copy', 'csv', 'excel', 'print']
-    });
-
+    // toastr setting
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
     // [ Column Selectors ]
     $('#cbtn-selectors').DataTable({
         dom: 'Bfrtip',
@@ -65,33 +76,5 @@
             },
             'colvis'
         ]
-    });
-
-    // [ Excel - Cell Background ]
-    $('#excel-bg').DataTable({
-        dom: 'Bfrtip',
-        buttons: [{
-            extend: 'excelHtml5',
-            customize: function(xlsx) {
-                var sheet = xlsx.xl.worksheets['sheet1.xml'];
-                $('row c[r^="F"]', sheet).each(function() {
-                    if ($('is t', this).text().replace(/[^\d]/g, '') * 1 >= 500000) {
-                        $(this).attr('s', '20');
-                    }
-                });
-            }
-        }]
-    });
-
-    // [ Custom File (JSON) ]
-    $('#pdf-json').DataTable({
-        dom: 'Bfrtip',
-        buttons: [{
-            text: 'JSON',
-            action: function(e, dt, button, config) {
-                var data = dt.buttons.exportData();
-                $.fn.dataTable.fileSave(new Blob([JSON.stringify(data)]), 'Export.json');
-            }
-        }]
     });
 </script>

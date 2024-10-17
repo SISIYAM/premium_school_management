@@ -16,8 +16,8 @@
             <td>{{ $count + 1 }}</td>
             <td>{{ $row->class_name }}</td>
             <td>
-                @isset($row->author->name)
-                    {{ $row->author->name }}
+                @isset($row->getAuthor->name)
+                    {{ $row->getAuthor->name }}
                 @else
                     Not found
                 @endisset
@@ -37,9 +37,10 @@
                         <i class="ti ti-edit f-20"></i>
                     </button>
                 </a>
-                <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
+                <button type="button" value="{{ $row->id }}"
+                    class="avtar avtar-xs btn btn-link-secondary deleteClassBtn" data-bs-toggle="tooltip"
                     data-bs-placement="top" title="Fees">
-                    <i class="ti ti-cash f-20"></i>
+                    <i class="ti ti-trash f-20"></i>
                 </button>
             </td>
 
@@ -69,6 +70,7 @@
 
 @push('ajax')
     <script>
+        // insert class
         $(document).on("click", "#saveClassInsert", function() {
             const class_name = $("#className").val();
             let tableBody = ""
@@ -82,12 +84,68 @@
                 success: function(response) {
                     if (response.status) {
                         toastr.success(response.message, 'Success');
-                        response.classes.forEach((element, index) => {
-                            const createdAt = moment(element.created_at).format(
-                                'DD MMM YYYY hh:mm A');
-                            const updatedAt = moment(element.updated_at).format(
-                                'DD MMM YYYY hh:mm A');
-                            tableBody += `
+
+                        loadClassesTable(response.classes);
+                        $("#className").val("");
+                        // $("#animateModal").modal("hide");
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.status === 422) {
+
+                        const errors = xhr.responseJSON.errors;
+
+                        $.each(errors, function(key, value) {
+                            toastr.error(value[0],
+                                'Validation Error');
+                        });
+                    } else {
+                        toastr.error('An unexpected error occurred.', 'Error');
+                    }
+                }
+            });
+        });
+
+        // deletet class
+        $(document).on("click", ".deleteClassBtn", function() {
+            const class_id = $(this).val();
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('admin.ajax.delete.class') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            class_id: class_id
+                        },
+                        success: function(response) {
+                            toastr.error(response.message);
+                            loadClassesTable(response.classes);
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseJSON)
+                        }
+                    });
+                }
+            });
+        })
+
+        // function for load class
+        function loadClassesTable(classes) {
+            classes.forEach((element, index) => {
+                const createdAt = moment(element.created_at).format(
+                    'DD MMM YYYY hh:mm A');
+                const updatedAt = moment(element.updated_at).format(
+                    'DD MMM YYYY hh:mm A');
+                tableBody += `
                             <tr>
                                 <td>${index + 1}</td>
                                 <td>${element.class_name}</td>
@@ -113,29 +171,11 @@
                                 </button>
                             </td>
                             </tr>`;
-                        });
-
-                        $("#className").val("");
-                        // $("#animateModal").modal("hide");
-                        $("#tableBody").html(tableBody);
-
-
-                    }
-                },
-                error: function(xhr) {
-                    if (xhr.status === 422) {
-
-                        const errors = xhr.responseJSON.errors;
-
-                        $.each(errors, function(key, value) {
-                            toastr.error(value[0],
-                                'Validation Error');
-                        });
-                    } else {
-                        toastr.error('An unexpected error occurred.', 'Error');
-                    }
-                }
             });
-        });
+
+
+            // Replace table body content
+            $("#tableBody").html(tableBody);
+        }
     </script>
 @endpush

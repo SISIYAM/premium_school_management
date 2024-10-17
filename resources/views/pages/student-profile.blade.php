@@ -1332,23 +1332,7 @@ Hello, I’m Anshan Handgun Creative Graphic Designer & User Experience Designer
 @endsection
 @push('ajax')
     <script>
-        // toastr setting
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": true,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": true,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
+        
         const studentId = "{{ $data->id }}";
         $(document).on("click", "#studentStatus", function() {
 

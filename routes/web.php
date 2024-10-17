@@ -67,6 +67,14 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         Route::post('/admin/ajax/filter/student-details/class','filterClassSearch')
         ->name('admin.ajax.student.filter.class');
         Route::post('/admin/ajax/create/class/','createClass')->name('admin.ajax.create.class');
+
+        // route for delete class
+        Route::post('admin/ajax/delete/class','deleteClass')->name('admin.ajax.delete.class');
+    });
+
+    // routes for delete
+    Route::controller(DeleteController::class)->group(function(){
+
     });
     
 });
