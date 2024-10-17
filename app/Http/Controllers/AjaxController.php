@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classe;
+use App\Models\Section;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -55,6 +56,26 @@ class AjaxController extends Controller
         return response()->json(['status' => true, 'message' => 'Class created successfully.','classes' => $class]);
     }
 
+    // method for create section
+    public function createSection(Request $req){
+        
+        $req->validate([
+            'class_id' => 'required|numeric',
+            'section_name' => 'required|string'
+        ]);
+
+        $insert = Section::create([
+            'class_id' => $req->class_id,
+            'section_name' => $req->section_name,
+            'author' => $this->admin_id
+        ]);
+
+        // after insert search all classes
+        $sections = Section::with(['getClass.getAuthor'])->get();
+        
+        return response()->json(['status' => true, 'message' => 'Section created successfully.','sections' => $sections]);
+    }
+
     // method for delete class
     public function deleteClass(Request $req){
         
@@ -70,6 +91,26 @@ class AjaxController extends Controller
         $classes = Classe::with('getAuthor')->get();
 
         return response()->json(['status' => true, 'message' => 'Class deleted successfully.','classes' => $classes]);
+
+       
+        
+    }
+
+     // method for delete Section
+     public function deleteSection(Request $req){
+        
+        $delete = Section::find($req->section_id);
+    
+        if (!$delete) {
+            return response()->json(['status' => false, 'message' => 'Section not found.']); 
+        } 
+
+        $delete->delete();
+
+        // now fetch all Sections
+        $sections = Section::with(['getClass.getAuthor'])->get();
+
+        return response()->json(['status' => true, 'message' => 'Sections deleted successfully.','sections' => $sections]);
 
        
         

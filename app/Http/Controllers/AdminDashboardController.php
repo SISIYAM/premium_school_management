@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Classe;
+use App\Models\Section;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -67,4 +68,16 @@ class AdminDashboardController extends Controller
         // return $class;
         return view('tables.manage-classes',['key' => 'classes','thead' => $thead, 'tableRow' => $class]);
     }
+
+    // method for load sections
+    public function loadSectionsList(){
+     // table headers
+     $thead = ['#','Class Name','Section Name','Author','Created At','Last Update', 'Action'];
+
+     $section = Section::with(['getClass.getAuthor'])->get();
+
+     $classes = Classe::all();
+    //  return $section;
+     return view('tables.manage-sections',['key' => 'classes','thead' => $thead, 'tableRow' => $section,'classes' => $classes]);
+ }
 }

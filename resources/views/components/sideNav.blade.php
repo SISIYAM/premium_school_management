@@ -431,7 +431,7 @@
                             <a class="pc-link" href="{{ route('admin.manage.class.list') }}">Manage Classes</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="">Manage Sections </a>
+                            <a class="pc-link" href="{{ route('admin.manage.section.list') }}">Manage Sections </a>
                         </li>
                         <li class="pc-item">
                             <a class="pc-link" href="">Student ID Card</a>

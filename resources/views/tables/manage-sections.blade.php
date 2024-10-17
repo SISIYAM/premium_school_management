@@ -1,11 +1,11 @@
 @extends('layouts.common-table')
 @section('card-header')
     <div class="d-sm-flex align-items-center justify-content-between">
-        <h5 class="mb-3 mb-sm-0">Classes list</h5>
+        <h5 class="mb-3 mb-sm-0">Sections list</h5>
         <div>
             <button data-pc-animate="blur" type="button" class="btn btn-primary" data-bs-toggle="modal"
                 data-bs-target="#animateModal">
-                Add Class
+                Add Sections
             </button>
         </div>
     </div>
@@ -14,10 +14,11 @@
     @foreach ($tableRow as $count => $row)
         <tr>
             <td>{{ $count + 1 }}</td>
-            <td>{{ $row->class_name }}</td>
+            <td>{{ $row->getClass->class_name }}</td>
+            <td>{{ $row->section_name }}</td>
             <td>
-                @isset($row->getAuthor->name)
-                    {{ $row->getAuthor->name }}
+                @isset($row->getClass->getAuthor->name)
+                    {{ $row->getClass->getAuthor->name }}
                 @else
                     Not found
                 @endisset
@@ -38,7 +39,7 @@
                     </button>
                 </a>
                 <button type="button" value="{{ $row->id }}"
-                    class="avtar avtar-xs btn btn-link-secondary deleteClassBtn" data-bs-toggle="tooltip"
+                    class="avtar avtar-xs btn btn-link-secondary deleteSectionBtn" data-bs-toggle="tooltip"
                     data-bs-placement="top" title="Delete">
                     <i class="ti ti-trash f-20"></i>
                 </button>
@@ -53,15 +54,30 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add class</h5>
+                    <h5 class="modal-title">Add Sections</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control" id="className" placeholder="Enter class name...">
+                    <div class="my-2">
+                        <label class="form-label" for="classID">Select Class</label>
+                        <select class="form-select" id="classID" name="class_id">
+                            <option value="">Select</option>
+                            @foreach ($classes as $class)
+                                <option value="{{ $class->id }}">{{ $class->class_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="my-2">
+                        <label class="form-label" for="sectionName">Section</label>
+                        <input type="text" class="form-control" id="sectionName" name="section_name"
+                            placeholder="Enter section name...">
+                    </div>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="saveClassInsert" class="btn btn-primary shadow-2">Save changes</button>
+                    <button type="button" id="saveSectionInsert" class="btn btn-primary shadow-2">Save changes</button>
                 </div>
             </div>
         </div>
@@ -71,23 +87,26 @@
 @push('ajax')
     <script>
         // insert class
-        $(document).on("click", "#saveClassInsert", function() {
-            const class_name = $("#className").val();
-            let tableBody = ""
+        $(document).on("click", "#saveSectionInsert", function() {
+            const class_id = $("#classID").val();
+            const section_name = $("#sectionName").val();
+
             $.ajax({
                 type: "POST",
-                url: "{{ route('admin.ajax.create.class') }}",
+                url: "{{ route('admin.ajax.create.section') }}",
                 data: {
                     _token: "{{ csrf_token() }}",
-                    class_name: class_name,
+                    class_id,
+                    section_name,
                 },
                 success: function(response) {
                     if (response.status) {
-                        toastr.success(response.message, 'Success');
-
-                        loadClassesTable(response.classes);
-                        $("#className").val("");
                         // $("#animateModal").modal("hide");
+                        toastr.success(response.message, 'Success');
+                        console.log(response);
+                        sectionTable(response.sections);
+                        $("#sectionName").val("");
+
                     }
                 },
                 error: function(xhr) {
@@ -107,8 +126,8 @@
         });
 
         // deletet class
-        $(document).on("click", ".deleteClassBtn", function() {
-            const class_id = $(this).val();
+        $(document).on("click", ".deleteSectionBtn", function() {
+            const section_id = $(this).val();
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -121,14 +140,14 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "POST",
-                        url: "{{ route('admin.ajax.delete.class') }}",
+                        url: "{{ route('admin.ajax.delete.section') }}",
                         data: {
                             _token: "{{ csrf_token() }}",
-                            class_id: class_id
+                            section_id: section_id
                         },
                         success: function(response) {
                             toastr.error(response.message);
-                            loadClassesTable(response.classes);
+                            sectionTable(response.sections);
                         },
                         error: function(xhr) {
                             console.log(xhr.responseJSON)
@@ -139,9 +158,9 @@
         })
 
         // function for load class
-        function loadClassesTable(classes) {
-            let tableBody = "";
-            classes.forEach((element, index) => {
+        function sectionTable(sections) {
+            let tableBody = ""
+            sections.forEach((element, index) => {
                 const createdAt = moment(element.created_at).format(
                     'DD MMM YYYY hh:mm A');
                 const updatedAt = moment(element.updated_at).format(
@@ -149,8 +168,9 @@
                 tableBody += `
                             <tr>
                                 <td>${index + 1}</td>
-                                <td>${element.class_name}</td>
-                                <td>${element.get_author.name ? element.get_author.name : 'Not found'}</td>
+                                <td>${element.get_class.class_name}</td>
+                                <td>${element.section_name}</td>
+                                <td>${element.get_class.get_author.name ? element.get_class.get_author.name : 'Not found'}</td>
                                 <td>${createdAt}</td>
                                 <td>${updatedAt}</td>
                                 <td>
@@ -166,7 +186,7 @@
                                         <i class="ti ti-edit f-20"></i>
                                     </button>
                                 </a>
-                                <button type="button" value="${element.id}" class="avtar avtar-xs btn btn-link-secondary deleteClassBtn" data-bs-toggle="tooltip"
+                                <button type="button" value="${element.id}" class="avtar avtar-xs btn btn-link-secondary deleteSectionBtn" data-bs-toggle="tooltip"
                                     data-bs-placement="top" title="Delete">
                                     <i class="ti ti-trash f-20"></i>
                                 </button>

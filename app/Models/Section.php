@@ -17,7 +17,7 @@ class Section extends Model
     ];
 
     // relation between class and section
-    public function classes(){
+    public function getClass(){
         return $this->belongsTo(Classe::class,'class_id','id');
     }
 }

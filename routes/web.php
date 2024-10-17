@@ -47,6 +47,7 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         Route::get('/student/profile/edit/{id?}','loadStudentUpdateForm')
         ->name('admin.update.student.details');
         Route::get('/manage/classes','loadClassesList')->name('admin.manage.class.list');
+        Route::get('/manage/sections','loadSectionsList')->name('admin.manage.section.list');
     });
 
     // routes for insert
@@ -66,10 +67,17 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         ->name('admin.ajax.student.status');
         Route::post('/admin/ajax/filter/student-details/class','filterClassSearch')
         ->name('admin.ajax.student.filter.class');
-        Route::post('/admin/ajax/create/class/','createClass')->name('admin.ajax.create.class');
 
-        // route for delete class
-        Route::post('admin/ajax/delete/class','deleteClass')->name('admin.ajax.delete.class');
+        // routes for insert
+        Route::post('/admin/ajax/create/class/','createClass')
+        ->name('admin.ajax.create.class');
+        Route::post('/admin/ajax/create/class/section','createSection')
+        ->name('admin.ajax.create.section');
+        // routes for delete 
+        Route::post('admin/ajax/delete/class','deleteClass')
+        ->name('admin.ajax.delete.class');
+        Route::post('admin/ajax/delete/section','deleteSection')
+        ->name('admin.ajax.delete.section');
     });
 
     // routes for delete
