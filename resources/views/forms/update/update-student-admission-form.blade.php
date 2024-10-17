@@ -108,15 +108,16 @@
                 <div class="col-md-3">
                     <div class="mb-3">
                         <label for="class" class="form-label">Class</label>
-                        <select id="class" class="form-select @error('class') is-invalid @enderror" name="class">
+                        <select id="classSelect" class="form-select @error('class') is-invalid @enderror" name="class">
                             <option value="">Select Class</option>
-                            <option value="1" {{ old('class', $data->class) == '1' ? 'selected' : '' }}>Class 1
-                            </option>
-                            <option value="2" {{ old('class', $data->class) == '2' ? 'selected' : '' }}>Class 2
-                            </option>
-                            <option value="3" {{ old('class', $data->class) == '3' ? 'selected' : '' }}>Class 3
-                            </option>
+                            @foreach ($classes as $class)
+                                <option value="{{ $class->id }}"
+                                    {{ old('class', $data->class ?? '') == $class->id ? 'selected' : '' }}>
+                                    {{ $class->class_name }}
+                                </option>
+                            @endforeach
                         </select>
+
                         @error('class')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -125,12 +126,9 @@
                 <div class="col-md-3">
                     <div class="mb-3">
                         <label for="section" class="form-label">Section</label>
-                        <select id="section" class="form-select @error('section') is-invalid @enderror" name="section">
-                            <option value="">Select Section</option>
-                            <option value="A" {{ old('section', $data->section) == 'A' ? 'selected' : '' }}>A
-                            </option>
-                            <option value="B" {{ old('section', $data->section) == 'B' ? 'selected' : '' }}>B
-                            </option>
+                        <select id="sectionField" class="form-select @error('section') is-invalid @enderror"
+                            name="section">
+                            <option value="">First select class</option>
                         </select>
                         @error('section')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -592,6 +590,44 @@
             } else {
                 currentAddress.val("");
             }
+        })
+    </script>
+@endpush
+
+@push('ajax')
+    <script>
+        $(document).on("change", "#classSelect", function() {
+            let optionField = "";
+            const class_id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "{{ route('admin.ajax.student.filter.class') }}",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    class_id,
+                },
+                success: function(response) {
+                    let optionField = "";
+                    const selectedSection =
+                        "{{ old('section', $data->section) }}";
+
+                    if (response.status) {
+                        response.sections.forEach(element => {
+                            const isSelected = element.id == selectedSection ? 'selected' : '';
+                            optionField +=
+                                `<option value="${element.id}" ${isSelected}>${element.section_name}</option>`;
+                        });
+                    } else {
+                        optionField = "<option>No sections found for the selected class.</option>";
+                    }
+
+                    $("#sectionField").html(optionField);
+                },
+                error: function(xhr) {
+                    toastr.error('An unexpected error occurred.', 'Error');
+                    console.log(xhr);
+                }
+            });
         })
     </script>
 @endpush

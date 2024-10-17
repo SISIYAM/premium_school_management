@@ -67,6 +67,9 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         ->name('admin.ajax.student.status');
         Route::post('/admin/ajax/filter/student-details/class','filterClassSearch')
         ->name('admin.ajax.student.filter.class');
+        // filter students based on class and sections
+        Route::post('/admin/ajax/filter/student/list','filterStudentList')
+        ->name('admin.ajax.student.list.filter');
 
         // routes for insert
         Route::post('/admin/ajax/create/class/','createClass')

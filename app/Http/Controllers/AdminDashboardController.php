@@ -18,15 +18,21 @@ class AdminDashboardController extends Controller
     // method for load student details table
     public function loadStudentDetailsTable(){
         $thead = ['A.No','Student Name','Roll','Class','Gender','Category','Mobile','Action'];
-        $students = Student::all();
+        $students = Student::with('getClass','getSection')->get();
+        // return $students;
+        // fetch all classes
+        $classes = Classe::all();
 
         // return $students;
-        return view('tables.student-list-table',['key'=> 'studentDetails','thead' => $thead,'tableRow' => $students]);
+        return view('tables.student-list-table',['key'=> 'studentDetails','thead' => $thead,'tableRow' => $students,'classes' => $classes]);
     }
 
     // method for load create student form 
     public function loadStudentCreateForm(){
-        return view('forms.student-admission-form');
+        // fetch all classes
+        $classes = Classe::all();
+      
+        return view('forms.student-admission-form',['classes' => $classes]);
     }
 
     // method for load student profile
@@ -54,7 +60,13 @@ class AdminDashboardController extends Controller
         if(empty($student)){
             return view('errors.error-404');
         }
-        return view('forms.update.update-student-admission-form',['data' => $student]);
+
+        // fetch all classes
+        $classes = Classe::all();
+        // fetch all sections
+        $sections = Section::all();
+
+        return view('forms.update.update-student-admission-form',['data' => $student,'classes' => $classes,'sections' => $sections]);
     }
 
     // method for load class list

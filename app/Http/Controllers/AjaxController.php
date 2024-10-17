@@ -111,8 +111,37 @@ class AjaxController extends Controller
         $sections = Section::with(['getClass.getAuthor'])->get();
 
         return response()->json(['status' => true, 'message' => 'Sections deleted successfully.','sections' => $sections]);
+        
+    }
+    
+    // method for filter sections based on class
+    public function filterClassSearch(Request $req){
+        // filter section based on class
+        $availableSections = Section::where('class_id',$req->class_id)->get();
+        if ($availableSections->isEmpty()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'No sections found for the selected class.',
+                'sections' => [],
+            ]);
+        }
 
-       
+        return response()->json([
+            'status' => true,
+            'sections' => $availableSections,
+        ]);
+    }
+
+    // method for filter student based on section id and class id
+    public function filterStudentList(Request $req){
+        
+        if($req->section_id == 'all'){
+            $filteredStudent = Student::where('class',$req->class_id)->with('getClass','getSection')->get();  
+        }else{
+            $filteredStudent = Student::where('section',$req->section_id)->with('getClass','getSection')->get();
+        }
+        
+        return response()->json(['status' => true,'students' => $filteredStudent]);
         
     }
 }

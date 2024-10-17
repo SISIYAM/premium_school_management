@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Classe;
+use App\Models\Section;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Student extends Model
 {
@@ -49,4 +51,13 @@ class Student extends Model
         'permanent_address',
     ];
     
+    // relation between student and class
+    public function getClass(){
+        return $this->belongsTo(Classe::class,'class','id');
+    }
+
+    // relation between student and section
+    public function getSection(){
+        return $this->belongsTo(Section::class,'section','id');
+    }
 }
