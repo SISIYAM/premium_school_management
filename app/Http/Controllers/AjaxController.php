@@ -136,9 +136,11 @@ class AjaxController extends Controller
     public function filterStudentList(Request $req){
         
         if($req->section_id == 'all'){
-            $filteredStudent = Student::where('class',$req->class_id)->with('getClass','getSection')->get();  
+            $filteredStudent = Student::where('class',$req->class_id)->with('getClass','getSection')
+            ->orderBy('id', 'desc')->get();  
         }else{
-            $filteredStudent = Student::where('section',$req->section_id)->with('getClass','getSection')->get();
+            $filteredStudent = Student::where('section',$req->section_id)->with('getClass','getSection')
+            ->orderBy('id', 'desc')->get();
         }
         
         return response()->json(['status' => true,'students' => $filteredStudent]);

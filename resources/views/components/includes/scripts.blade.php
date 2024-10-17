@@ -49,6 +49,7 @@
     };
     // [ Column Selectors ]
     $('#cbtn-selectors').DataTable({
+        ordering: false,
         dom: 'Bfrtip',
         buttons: [{
                 extend: 'copyHtml5',
@@ -71,7 +72,15 @@
             {
                 extend: 'print',
                 exportOptions: {
-                    columns: ':visible'
+                    columns: ':visible',
+                    modifier: {
+                        page: 'current'
+                    }
+                },
+                customize: function(win) {
+                    $(win.document.body).find('table')
+                        .addClass('display')
+                        .css('font-size', '12px');
                 }
             },
             'colvis'

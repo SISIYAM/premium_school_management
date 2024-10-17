@@ -18,7 +18,9 @@ class AdminDashboardController extends Controller
     // method for load student details table
     public function loadStudentDetailsTable(){
         $thead = ['A.No','Status','Student Name','Roll','Class','Gender','Category','Mobile','Action'];
-        $students = Student::with('getClass','getSection')->get();
+        $students = Student::with('getClass','getSection')
+        ->orderBy('id', 'desc') 
+        ->get();
         // return $students;
         // fetch all classes
         $classes = Classe::all();
