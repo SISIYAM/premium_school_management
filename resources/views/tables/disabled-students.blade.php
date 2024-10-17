@@ -1,100 +1,64 @@
 @extends('layouts.common-table')
 
-@if ($key == 'studentDetails')
-    @section('card-header')
-        <h4>
-            Student List</h4>
-    @endsection
-    @section('filter-section')
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4>Select Criteria</h4>
-                </div>
-                <!-- New Filter Section -->
-                <div class="card-body">
-                    <div class="row mb-3 d-flex justify-content-center">
-                        <div class="col-sm-4">
-                            <label for="filterStudentClass" class="form-label fw-bold">Class:</label>
-                            <select id="filterStudentClass" class="form-select shadow-sm">
-                                <option value="all">All</option>
-                                @foreach ($classes as $class)
-                                    <option value="{{ $class->id }}">{{ $class->class_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-sm-4">
-                            <label for="filterStudentSection" class="form-label fw-bold">Section:</label>
-                            <select id="filterStudentSection" class="form-select shadow-sm">
-                                <option value="all">First Select a class</option>
+@section('card-header')
+    <h4>
+        Disabled Student List</h4>
+@endsection
+@section('table-row')
+    @foreach ($tableRow as $count => $row)
+        <tr>
+            <td>{{ $row->admission_no }}</td>
+            <td>
+                @if ($row->status)
+                    <span class="badge bg-success">Active</span>
+                @else
+                    <span class="badge bg-danger">Disabled</span>
+                @endif
+            </td>
+            <td>{{ $row->first_name . ' ' . $row->last_name }}</td>
+            <td>{{ $row->roll_no }}</td>
+            <td>
+                @if ($row->getClass)
+                    {{ $row->getClass->class_name }}
+                @else
+                    <span class="text-danger">Class not found</span>
+                @endif
 
-                            </select>
-                        </div>
-                    </div>
-                    {{-- <div class="d-flex justify-content-center">
-                        <div class="col-sm-2">
-                            <button id="applyFilter" class="btn btn-primary w-100">Apply Filter</button>
-                        </div>
-                    </div> --}}
-                </div>
-            </div>
-        </div>
-    @endsection
-    @section('table-row')
-        @foreach ($tableRow as $count => $row)
-            <tr>
-                <td>{{ $row->admission_no }}</td>
-                <td>
-                    @if ($row->status)
-                        <span class="badge bg-success">Active</span>
-                    @else
-                        <span class="badge bg-danger">Disabled</span>
-                    @endif
-                </td>
-                <td>{{ $row->first_name . ' ' . $row->last_name }}</td>
-                <td>{{ $row->roll_no }}</td>
-                <td>
-                    @if ($row->getClass)
-                        {{ $row->getClass->class_name }}
-                    @else
-                        <span class="text-danger">Class not found</span>
-                    @endif
-
-                    @if ($row->getSection)
-                        ({{ $row->getSection->section_name }})
-                    @else
-                        <span class="text-danger">(Section not found)</span>
-                    @endif
-                </td>
+                @if ($row->getSection)
+                    ({{ $row->getSection->section_name }})
+                @else
+                    <span class="text-danger">(Section not found)</span>
+                @endif
+            </td>
 
 
 
-                <td>{{ $row->gender }}</td>
-                <td>{{ $row->category }}</td>
-                <td>{{ $row->mobile }}</td>
-                <td>
-                    <a href="{{ route('admin.student.profile', $row->id) }}">
-                        <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="View">
-                            <i class="ti ti-eye f-20"></i>
-                        </button>
-                    </a>
-                    <a href="{{ route('admin.update.student.details', $row->id) }}">
-                        <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="Edit">
-                            <i class="ti ti-edit f-20"></i>
-                        </button>
-                    </a>
+            <td>{{ $row->gender }}</td>
+            <td>{{ $row->category }}</td>
+            <td>{{ $row->mobile }}</td>
+            <td>
+                <a href="{{ route('admin.student.profile', $row->id) }}">
                     <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Fees">
-                        <i class="ti ti-cash f-20"></i>
+                        data-bs-placement="top" title="View">
+                        <i class="ti ti-eye f-20"></i>
                     </button>
-                </td>
+                </a>
+                <a href="{{ route('admin.update.student.details', $row->id) }}">
+                    <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Edit">
+                        <i class="ti ti-edit f-20"></i>
+                    </button>
+                </a>
+                <button type="button" class="avtar avtar-xs btn btn-link-secondary" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Fees">
+                    <i class="ti ti-cash f-20"></i>
+                </button>
+            </td>
 
-            </tr>
-        @endforeach
-    @endsection
-@endif
+        </tr>
+    @endforeach
+@endsection
+
 @push('ajax')
     <script>
         $(document).on("change", "#filterStudentClass", function() {

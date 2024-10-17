@@ -87,7 +87,7 @@
                             <a class="pc-link" href="{{ route('admin.student.create') }}">Create Student</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="">Disabled Students</a>
+                            <a class="pc-link" href="{{ route('admin.list.desabled.student') }}">Disabled Students</a>
                         </li>
                         <li class="pc-item">
                             <a class="pc-link" href="">Student Categories</a>

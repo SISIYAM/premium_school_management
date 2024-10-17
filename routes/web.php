@@ -48,6 +48,8 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         ->name('admin.update.student.details');
         Route::get('/manage/classes','loadClassesList')->name('admin.manage.class.list');
         Route::get('/manage/sections','loadSectionsList')->name('admin.manage.section.list');
+        Route::get('/student/list/disabled','loadDisabledStudents')
+        ->name('admin.list.desabled.student');
     });
 
     // routes for insert

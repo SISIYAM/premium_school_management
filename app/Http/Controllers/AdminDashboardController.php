@@ -17,7 +17,7 @@ class AdminDashboardController extends Controller
     }
     // method for load student details table
     public function loadStudentDetailsTable(){
-        $thead = ['A.No','Student Name','Roll','Class','Gender','Category','Mobile','Action'];
+        $thead = ['A.No','Status','Student Name','Roll','Class','Gender','Category','Mobile','Action'];
         $students = Student::with('getClass','getSection')->get();
         // return $students;
         // fetch all classes
@@ -91,5 +91,19 @@ class AdminDashboardController extends Controller
      $classes = Classe::all();
     //  return $section;
      return view('tables.manage-sections',['key' => 'classes','thead' => $thead, 'tableRow' => $section,'classes' => $classes]);
- }
+    }
+
+    // method for load disabled students 
+    public function loadDisabledStudents(){
+        $thead = ['A.No','Status','Student Name','Roll','Class','Gender','Category','Mobile','Action'];
+        $students = Student::where('status',0)->with('getClass','getSection')->get();
+        // return $students;
+        // fetch all classes
+        $classes = Classe::all();
+
+        // return $students;
+        return view('tables.disabled-students',['key'=> 'studentDetails','thead' => $thead,'tableRow' => $students,'classes' => $classes]);
+    }
+
+
 }

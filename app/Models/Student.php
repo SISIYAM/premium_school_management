@@ -49,6 +49,7 @@ class Student extends Model
         'guardian_photo',
         'current_address',
         'permanent_address',
+        'status'
     ];
     
     // relation between student and class
