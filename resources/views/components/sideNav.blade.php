@@ -270,6 +270,31 @@
 
                     </ul>
                 </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="#" class="pc-link">
+                        <span class="pc-micon">
+                            <i class="ti ti-user-check"></i>
+
+                        </span>
+                        <span class="pc-mtext">Behaviour Reports</span>
+                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    </a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{ route('admin.behaviour.assign') }}">Assign Incident</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Incidents</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Reports</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Settings</a>
+                        </li>
+
+                    </ul>
+                </li>
 
                 <li class="pc-item pc-hasmenu">
                     <a href="#" class="pc-link">
