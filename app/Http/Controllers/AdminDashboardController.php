@@ -107,5 +107,10 @@ class AdminDashboardController extends Controller
         return view('tables.disabled-students',['key'=> 'studentDetails','thead' => $thead,'tableRow' => $students,'classes' => $classes]);
     }
 
+    // method for load attendance form
+    public function loadTakeAttendanceForm(){
+        return view('forms.attendance-form');
+    }
+
 
 }

@@ -50,6 +50,10 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         Route::get('/manage/sections','loadSectionsList')->name('admin.manage.section.list');
         Route::get('/student/list/disabled','loadDisabledStudents')
         ->name('admin.list.desabled.student');
+
+        // routes for handle student attendance
+        Route::get('/student/take/attendance','loadTakeAttendanceForm')
+        ->name('admin.take.student.attendance');
     });
 
     // routes for insert

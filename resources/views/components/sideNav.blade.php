@@ -89,12 +89,7 @@
                         <li class="pc-item">
                             <a class="pc-link" href="{{ route('admin.list.desabled.student') }}">Disabled Students</a>
                         </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="">Student Categories</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="">Student Hostels</a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
@@ -241,7 +236,7 @@
                     </a>
                     <ul class="pc-submenu">
                         <li class="pc-item">
-                            <a class="pc-link" href="">Attendance</a>
+                            <a class="pc-link" href="{{ route('admin.take.student.attendance') }}">Attendance</a>
                         </li>
                         <li class="pc-item">
                             <a class="pc-link" href="">Application Leave</a>
@@ -432,6 +427,12 @@
                         </li>
                         <li class="pc-item">
                             <a class="pc-link" href="{{ route('admin.manage.section.list') }}">Manage Sections </a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Manage Student Categories</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="">Manage Student Hostels</a>
                         </li>
                         <li class="pc-item">
                             <a class="pc-link" href="">Student ID Card</a>
