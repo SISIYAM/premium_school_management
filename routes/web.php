@@ -54,6 +54,10 @@ Route::middleware([AdminMiddleware::class])->group(function(){
         // routes for handle student attendance
         Route::get('/student/take/attendance','loadTakeAttendanceForm')
         ->name('admin.take.student.attendance');
+
+        //Route for behaviour reports
+        Route::get('/student/behaviour/assign','loadAssignIncidentsTable')
+        ->name('admin.behaviour.assign');
     });
 
     // routes for insert

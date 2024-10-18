@@ -113,4 +113,18 @@ class AdminDashboardController extends Controller
     }
 
 
+    // Method for load behaviour assign incidents
+    public function loadAssignIncidentsTable(){
+        $thead = ['A.No','Status','Student Name','Roll','Class','Gender', 'Phone','Points', 'Action'];
+        $students = Student::with('getClass','getSection')
+        ->orderBy('id', 'desc') 
+        ->get();
+        // return $students;
+        // fetch all classes
+        $classes = Classe::all();
+
+        return view('tables.assign-incidents', ['thead'=>$thead, 
+        'tableRow'=> $students, 'classes'=>$classes]);
+    }
+
 }
