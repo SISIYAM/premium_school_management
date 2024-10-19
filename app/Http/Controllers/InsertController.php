@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class InsertController extends Controller
 {
 
+    protected $admin_id;
+
+    public function __construct()
+    {
+        $this->admin_id = auth()->user()->id;
+    }
+
     // Function to generate admission number
     protected function generateAdmissionNo()
     {
